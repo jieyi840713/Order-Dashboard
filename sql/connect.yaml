@@ -1,0 +1,5 @@
+host: 127.0.0.1
+username: root
+password: "abcd1234"
+dbname: "order-dashboard"
+port: 3306
