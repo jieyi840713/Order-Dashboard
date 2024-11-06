@@ -1,0 +1,20 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /v1/users/                --> order-dashboard/service.FindAllUsers (5 handlers)
+[GIN-debug] POST   /v1/users/                --> order-dashboard/service.PostUser (5 handlers)
+[GIN-debug] DELETE /v1/users/:id             --> order-dashboard/service.DeleteUser (5 handlers)
+[GIN-debug] GET    /v1/menu/                 --> order-dashboard/service.FindAllItems (5 handlers)
+[GIN-debug] GET    /v1/menu/:id              --> order-dashboard/service.FindItemByItemId (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8000
+[GIN-debug] redirecting request 301: /v1/menu/ --> /v1/menu/
+[GIN] 2024/11/06 - 20:16:51 | 401 |       5.018µs |             ::1 | GET      "/v1/menu/"
+[GIN-debug] redirecting request 301: /v1/menu/ --> /v1/menu/
+%s - [%s] %s %s %d 
+ ::1 2024-11-06 20:17:05.963119 +0800 CST m=+18.096500128 GET /v1/menu/ 200
+[GIN] 2024/11/06 - 20:17:05 | 200 |    1.878073ms |             ::1 | GET      "/v1/menu/"
