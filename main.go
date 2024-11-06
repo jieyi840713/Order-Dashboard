@@ -19,7 +19,7 @@ func main() {
 
 	setupLogging()
 	router := gin.Default()
-	router.Use(gin.Recovery(), middlewares.Logger())
+	router.Use(gin.BasicAuth(gin.Accounts{"Tom": "123456"}), middlewares.Logger())
 	v1 := router.Group("v1")
 	AddUserRouter(v1)
 	AddMenuRouter(v1)
