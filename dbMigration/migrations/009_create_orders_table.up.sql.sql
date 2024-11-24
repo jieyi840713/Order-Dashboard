@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS orders (
+    id              BIGINT          AUTO_INCREMENT PRIMARY KEY,
+    order_no        VARCHAR(20)     NOT NULL COMMENT '訂單編號',
+    employee_id     BIGINT          NULL COMMENT '員工ID',
+    table_no        INT             NULL COMMENT '桌號',
+    total_amount    DECIMAL(10, 2)  NOT NULL DEFAULT 0 COMMENT '訂單總額',
+    discount_amount DECIMAL(10, 2)  NOT NULL DEFAULT 0 COMMENT '折扣金額',
+    final_amount    DECIMAL(10, 2)  NOT NULL DEFAULT 0 COMMENT '實付金額',
+    status          TINYINT         NOT NULL DEFAULT 1 COMMENT '狀態: 1-未付款 2-準備中 3-已完成 4-已取消',
+    payment_method  TINYINT         NOT NULL DEFAULT 1 COMMENT '付款方式: 1-現金 2-信用卡 3-線上支付',
+    order_date      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '訂單日期',
+    paid_date       DATETIME        NULL COMMENT '付款日期',
+    notes           VARCHAR(500)    NULL COMMENT '備註',
+    modify_user     VARCHAR(50)     NULL COMMENT '修改人',
+    modify_time     TIMESTAMP       DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改時間',
+    create_user     VARCHAR(50)     NULL COMMENT '創建人',
+    create_time     TIMESTAMP       DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '創建時間',
+    FOREIGN KEY fk_order_employee (employee_id) REFERENCES employees(id),
+    UNIQUE KEY uk_order_no (order_no),
+    INDEX idx_order_date (order_date),
+    INDEX idx_status (status),
+    INDEX idx_table (table_no)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='訂單表';
